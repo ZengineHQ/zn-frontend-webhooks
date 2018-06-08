@@ -1,0 +1,31 @@
+{
+  "name": "@zenginehq/frontend-webhook",
+  "version": "1.0.0",
+  "description": "Helper library for working with webhooks in Zengine frontend plugins.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "jshint --config .jshintrc ./src || true",
+    "build": "node-sass src/plugin.scss src/plugin.css --output-style compressed",
+    "release": "jshint --config .jshintrc ./src && npm run build && standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZengineHQ/zn-frontend-webhook.git"
+  },
+  "keywords": [
+	  "zn-plugin",
+	  "zn-frontend",
+	  "zn-module"
+  ],
+  "author": "Alex Weber <alex.weber@wizehive.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZengineHQ/zn-frontend-webhook/issues"
+  },
+  "homepage": "https://github.com/ZengineHQ/zn-frontend-webhook#readme",
+  "devDependencies": {
+    "jshint": "^2.9.5",
+    "node-sass": "^4.9.0",
+    "standard-version": "^4.4.0"
+  }
+}
