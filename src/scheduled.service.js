@@ -40,34 +40,34 @@ plugin.service('wgnTriggeredWebhook', ['wgnWebhookCommon', function (webhookComm
 	/**
 	 * Disables a scheduled webhook.
 	 *
-	 * @param {number|Object} webhook Either the webhook id or an object containing a key called 'webhookId'.
+	 * @param {number} webhookId
 	 *
 	 * @return {Promise<Object>}
 	 */
-	srv.disable = function (webhook) {
-		return webhookCommon.disable(webhook, true);
+	srv.disable = function (webhookId) {
+		return webhookCommon.disable(webhookId, true);
 	};
 
 	/**
 	 * Enables a scheduled webhook.
 	 *
-	 * @param {number|Object} webhook Either the webhook id or an object containing a key called 'webhookId'.
+	 * @param {number} webhookId
 	 *
 	 * @return {Promise<Object>}
 	 */
-	srv.enable = function (webhook) {
-		return webhookCommon.enable(webhook, true);
+	srv.enable = function (webhookId) {
+		return webhookCommon.enable(webhookId, true);
 	};
 
 	/**
 	 * Deletes a webhook.
 	 *
-	 * @param {number|Object} webhook Either the webhook id or an object containing a key called 'webhookId'.
+	 * @param {number} webhookId
 	 *
 	 * @return {Promise<Object>}
 	 */
-	srv.delete = function (webhook) {
-		return webhookCommon.delete(webhook, true);
+	srv.delete = function (webhookId) {
+		return webhookCommon.delete(webhookId, true);
 	};
 
 	return srv;

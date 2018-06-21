@@ -51,39 +51,36 @@ plugin.service('wgnWebhookCommon', ['$routeParams', 'znData', function ($routePa
 	/**
 	 * Disables a webhook.
 	 *
-	 * @param {number|Object} webhook Either the webhook id or an object containing a key called 'webhookId'.
+	 * @param {number} webhookId
 	 * @param {boolean} scheduled Whether we're dealing with Scheduled Webhooks, defaults to regular ones.
 	 *
 	 * @return {Promise<Object>}
 	 */
-	srv.disable = function (webhook, scheduled) {
-		var webhookId = angular.isObject(webhook) && 'webhookId' in webhook ? webhook.webhookId : webhook;
+	srv.disable = function (webhookId, scheduled) {
 		return toggle(webhookId, false, scheduled);
 	};
 
 	/**
 	 * Enables a webhook.
 	 *
-	 * @param {number|Object} webhook Either the webhook id or an object containing a key called 'webhookId'.
+	 * @param {number} webhookId
 	 * @param {boolean} scheduled Whether we're dealing with Scheduled Webhooks, defaults to regular ones.
 	 *
 	 * @return {Promise<Object>}
 	 */
-	srv.enable = function (webhook, scheduled) {
-		var webhookId = angular.isObject(webhook) && 'webhookId' in webhook ? webhook.webhookId : webhook;
+	srv.enable = function (webhookId, scheduled) {
 		return toggle(webhookId, true, scheduled);
 	};
 
 	/**
 	 * Deletes a webhook.
 	 *
-	 * @param {number|Object} webhook Either the webhook id or an object containing a key called 'webhookId'.
+	 * @param {number} webhookId
 	 * @param {boolean} scheduled Whether we're dealing with Scheduled Webhooks, defaults to regular ones.
 	 *
 	 * @return {Promise<Object>}
 	 */
-	srv.delete = function (webhook, scheduled) {
-		var webhookId = angular.isObject(webhook) && 'webhookId' in webhook ? webhook.webhookId : webhook;
+	srv.delete = function (webhookId, scheduled) {
 		var resource = scheduled ? 'ScheduledWebhooks' : 'Webhooks';
 		return znData(resource).delete({ id: webhookId });
 	};
