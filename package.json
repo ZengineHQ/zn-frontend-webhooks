@@ -5,8 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "jshint --config .jshintrc ./src || true",
-    "build": "node-sass src/plugin.scss src/plugin.css --output-style compressed",
-    "release": "jshint --config .jshintrc ./src && npm run build && standard-version"
+    "release": "jshint --config .jshintrc ./src && standard-version"
   },
   "repository": {
     "type": "git",
@@ -25,7 +24,6 @@
   "homepage": "https://github.com/ZengineHQ/zn-frontend-webhooks#readme",
   "devDependencies": {
     "jshint": "^2.9.5",
-    "node-sass": "^4.9.0",
     "standard-version": "^4.4.0"
   }
 }
