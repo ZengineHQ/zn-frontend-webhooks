@@ -17,7 +17,13 @@ It's important that this gets inside under the `plugins/myplugin/src` directory,
 plugin.controller('MyAwesomeController', ['$scope', 'wgnWebhook', 'wgnScheduledWebhook', function ($scope, webhook, scheduledWebhook) {
 	
   $scope.onSomething(function () {
-    webhook.create().then(function (webhook) {
+  	var params = {
+  		//'url': 'http://www.example.com/endpoint',
+  		'url': 'myservice',     // <--- notice how you can pass a backend service name and the url will get built automatically.
+  		'form.id': 123
+  	};
+  	
+    webhook.create(params).then(function (webhook) {
     	console.log(webhook.id);
     	console.log(webhook.secretKey);
     });
