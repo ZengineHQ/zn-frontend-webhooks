@@ -13,7 +13,8 @@ plugin.service('wgnWebhook', ['wgnWebhookCommon', function (webhookCommon) {
 		var defaults = {
 			isActive: false,
 			url: '',
-			includeRelated: false
+			includeRelated: false,
+			resource: 'records'
 		};
 
 		return webhookCommon.create(defaults, options, false);
