@@ -9,7 +9,7 @@
 npm i @zenginehq/frontend-webhooks --save
 ```
 
-It's important that this gets inside under the `src` directory, alongside your plugin's other code if not Maya won't build it properly.
+It's important that this gets inside under the `plugins/myplugin/src` directory, alongside your plugin's other code if not Maya won't build it properly.
 
 ## Usage
 
@@ -31,7 +31,7 @@ plugin.controller('MyAwesomeController', ['$scope', 'wgnWebhook', 'wgnScheduledW
     scheduledWebhook.enable();
     scheduledWebhook.disable();
 	});
-  
+
 }]);
 ```
 ### Regular vs Scheduled Webhooks
