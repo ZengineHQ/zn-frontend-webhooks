@@ -5,19 +5,18 @@ plugin.service('wgnWebhook', ['wgnWebhookCommon', function (webhookCommon) {
 	 * Creates a regular webhook and returns it's info.
 	 * You can pass a service endpoint name for the url.
 	 *
-	 * @param {number} workspaceId
 	 * @param {Object} options
 	 *
 	 * @return {Promise<Object>} A promise for an object with 'id' and 'key' properties containing the webhook's info.
 	 */
-	srv.create = function (workspaceId, options) {
+	srv.create = function (options) {
 		var defaults = {
 			isActive: false,
 			url: '',
 			includeRelated: false
 		};
 
-		return webhookCommon.create(workspaceId, defaults, options, false);
+		return webhookCommon.create(defaults, options, false);
 	};
 
 	/**

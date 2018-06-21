@@ -5,12 +5,11 @@ plugin.service('wgnTriggeredWebhook', ['wgnWebhookCommon', function (webhookComm
 	 * Creates a scheduled webhook and returns it's info.
 	 * You can pass a service endpoint name for the url.
 	 *
-	 * @param {number} workspaceId
 	 * @param {Object} options
 	 *
 	 * @return {Promise<Object>} A promise for an object with 'id' and 'key' properties containing the webhook's info.
 	 */
-	srv.create = function (workspaceId, options) {
+	srv.create = function (options) {
 		var defaults = {
 			frequency: 'daily',
 			description: 'Scheduled webhook for wgn',
@@ -24,7 +23,7 @@ plugin.service('wgnTriggeredWebhook', ['wgnWebhookCommon', function (webhookComm
 			defaults.start = moment(options.start).format('YYYY-MM-DD[T]HH:mm:ss');
 		}
 
-		return webhookCommon.create(workspaceId, defaults, options, true);
+		return webhookCommon.create(defaults, options, true);
 	};
 
 	/**

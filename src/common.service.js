@@ -1,17 +1,17 @@
-plugin.service('wgnWebhookCommon', ['znData', function (znData) {
+plugin.service('wgnWebhookCommon', ['$routeParams', 'znData', function ($routeParams, znData) {
 	var srv = this;
+	var workspaceId = $routeParams.workspace_id;
 
 	/**
 	 * Creates a new webhook.
 	 *
-	 * @param {number} workspaceId
 	 * @param {Object} params Default params for scheduled/non-scheduled.
 	 * @param {Object} options User params
 	 * @param {boolean} scheduled Whether we're dealing with Scheduled Webhooks, defaults to regular ones.
 	 *
 	 * @return {Promise<Object>}
 	 */
-	srv.create = function (workspaceId, params, options, scheduled) {
+	srv.create = function (params, options, scheduled) {
 		scheduled = scheduled || false;
 		params = params || {};
 
@@ -21,11 +21,9 @@ plugin.service('wgnWebhookCommon', ['znData', function (znData) {
 			throw new Error('Options required.');
 		}
 
-		angular.extend(params, options, {
-			'workspace.id': workspaceId,
-		});
+		angular.extend(params, options, { 'workspace.id': workspaceId });
 
-		if (!('scope') in params) {
+		if (!('scope') in params || !params.scope) {
 			params.scope = 'plugin.wgn';
 		}
 
@@ -34,12 +32,7 @@ plugin.service('wgnWebhookCommon', ['znData', function (znData) {
 			params.url = 'https://plugins.zenginehq.com/workspaces/' + workspaceId + '/wgn/' + params.url;
 		}
 
-		return znData(resource).save(finalParams).then(function (webhook) {
-			return {
-				webhookId: webhook.id,
-				webhookKey: webhook.secretKey
-			};
-		});
+		return znData(resource).save(params);
 	};
 
 	/**
