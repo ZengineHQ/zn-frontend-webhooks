@@ -12,6 +12,7 @@ plugin.service('wgnWebhookCommon', ['$routeParams', 'znData', function ($routePa
 	 * @return {Promise<Object>}
 	 */
 	srv.create = function (params, options, scheduled) {
+    /*jshint maxcomplexity:9 */
 		scheduled = scheduled || false;
 		params = params || {};
 
