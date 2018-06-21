@@ -1,6 +1,6 @@
 {
   "name": "@zenginehq/frontend-webhooks",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Helper library for working with webhooks in Zengine frontend plugins.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,9 +12,9 @@
     "url": "git+https://github.com/ZengineHQ/zn-frontend-webhooks.git"
   },
   "keywords": [
-	  "zn-plugin",
-	  "zn-frontend",
-	  "zn-module"
+    "zn-plugin",
+    "zn-frontend",
+    "zn-module"
   ],
   "author": "Alex Weber <alex.weber@wizehive.com",
   "license": "MIT",
