@@ -1,8 +1,8 @@
-plugin.service('wgnWebhook', ['wgnWebhookCommon', function (webhookCommon) {
+plugin.service('wgnTriggeredWebhook', ['wgnWebhookCommon', function (webhookCommon) {
 	var srv = this;
 
 	/**
-	 * Creates a regular webhook and returns it's info.
+	 * Creates a scheduled webhook and returns it's info.
 	 * You can pass a service endpoint name for the url.
 	 *
 	 * @param {number} workspaceId
@@ -12,45 +12,52 @@ plugin.service('wgnWebhook', ['wgnWebhookCommon', function (webhookCommon) {
 	 */
 	srv.create = function (workspaceId, options) {
 		var defaults = {
+			frequency: 'daily',
+			description: 'Scheduled webhook for wgn',
+			start: new Date(),
+			timezone: 'America/New_York',
 			isActive: false,
-			url: '',
-			includeRelated: false
+			url: ''
 		};
 
-		return webhookCommon.create(workspaceId, defaults, options, false);
+		if ('start' in options && option.start) {
+			defaults.start = moment(options.start).format('YYYY-MM-DD[T]HH:mm:ss');
+		}
+
+		return webhookCommon.create(workspaceId, defaults, options, true);
 	};
 
 	/**
-	 * Updates a webhook.
+	 * Updates a scheduled webhook.
 	 *
 	 * @param {Object} data
 	 *
 	 * @return {Promise<Object>}
 	 */
 	srv.update = function (data) {
-		return webhookCommon.update(data, false);
+		return webhookCommon.update(data, true);
 	};
 
 	/**
-	 * Disables a webhook.
+	 * Disables a scheduled webhook.
 	 *
 	 * @param {number|Object} webhook Either the webhook id or an object containing a key called 'webhookId'.
 	 *
 	 * @return {Promise<Object>}
 	 */
 	srv.disable = function (webhook) {
-		return webhookCommon.disable(webhook, false);
+		return webhookCommon.disable(webhook, true);
 	};
 
 	/**
-	 * Enables a webhook.
+	 * Enables a scheduled webhook.
 	 *
 	 * @param {number|Object} webhook Either the webhook id or an object containing a key called 'webhookId'.
 	 *
 	 * @return {Promise<Object>}
 	 */
 	srv.enable = function (webhook) {
-		return webhookCommon.enable(webhook, false);
+		return webhookCommon.enable(webhook, true);
 	};
 
 	/**
@@ -61,7 +68,7 @@ plugin.service('wgnWebhook', ['wgnWebhookCommon', function (webhookCommon) {
 	 * @return {Promise<Object>}
 	 */
 	srv.delete = function (webhook) {
-		return webhookCommon.delete(webhook, false);
+		return webhookCommon.delete(webhook, true);
 	};
 
 	return srv;
