@@ -19,7 +19,7 @@ plugin.service('wgnTriggeredWebhook', ['wgnWebhookCommon', function (webhookComm
 			url: ''
 		};
 
-		if ('start' in options && option.start) {
+		if ('start' in options && options.start) {
 			defaults.start = moment(options.start).format('YYYY-MM-DD[T]HH:mm:ss');
 		}
 

@@ -23,7 +23,7 @@ plugin.service('wgnWebhookCommon', ['$routeParams', 'znData', function ($routePa
 
 		angular.extend(params, options, { 'workspace.id': workspaceId });
 
-		if (!('scope') in params || !params.scope) {
+		if (!('scope' in params) || !params.scope) {
 			params.scope = 'plugin.wgn';
 		}
 
@@ -45,7 +45,7 @@ plugin.service('wgnWebhookCommon', ['$routeParams', 'znData', function ($routePa
 	 */
 	srv.update = function (data, scheduled) {
 		var resource = scheduled ? 'ScheduledWebhooks' : 'Webhooks';
-		return znData(resource).save({ id: webhookId }, data);
+		return znData(resource).save({ id: data.id }, data);
 	};
 
 	/**
