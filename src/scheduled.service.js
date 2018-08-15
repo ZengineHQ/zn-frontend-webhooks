@@ -1,4 +1,4 @@
-plugin.service('wgnTriggeredWebhook', ['wgnWebhookCommon', function (webhookCommon) {
+plugin.service('wgnScheduledWebhook', ['wgnWebhookCommon', function (webhookCommon) {
 	var srv = this;
 
 	/**
