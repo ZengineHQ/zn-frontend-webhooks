@@ -64,5 +64,16 @@ plugin.service('wgnWebhook', ['wgnWebhookCommon', function (webhookCommon) {
 		return webhookCommon.delete(webhookId, false);
 	};
 
+	/**
+	 * Loads a webhook.
+	 *
+	 * @param {number} webhookId
+	 *
+	 * @return {Promise<Object>}
+	 */
+	srv.load = function (webhookId) {
+		return webhookCommon.load(webhookId, false);
+	};
+
 	return srv;
 }]);

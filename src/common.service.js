@@ -86,6 +86,19 @@ plugin.service('wgnWebhookCommon', ['$routeParams', 'znData', function ($routePa
     return znData(resource).delete({ id: webhookId });
   };
 
+	/**
+	 * Loads a webhook.
+	 *
+	 * @param {number} webhookId
+	 * @param {boolean} scheduled Whether we're dealing with Scheduled Webhooks, defaults to regular ones.
+	 *
+	 * @return {Promise<Object>}
+	 */
+  srv.load = function (webhookId, scheduled) {
+	  var resource = scheduled ? 'ScheduledWebhooks' : 'Webhooks';
+	  return znData(resource).get({ id: webhookId });
+  };
+
   /**
    * Saves the 'isActive' flag for webhooks.
    *
