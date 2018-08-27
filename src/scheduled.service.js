@@ -13,8 +13,6 @@ plugin.service('wgnScheduledWebhook', ['wgnWebhookCommon', function (webhookComm
 		var defaults = {
 			frequency: 'daily',
 			description: 'Scheduled webhook for wgn',
-			start: moment().format('YYYY-MM-DD[T]HH:mm:ss'),
-			timezone: 'UTC',
 			isActive: false,
 			url: ''
 		};
