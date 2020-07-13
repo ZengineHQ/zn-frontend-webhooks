@@ -24,6 +24,6 @@
   "homepage": "https://github.com/ZengineHQ/zn-frontend-webhooks#readme",
   "devDependencies": {
     "jshint": "^2.9.5",
-    "standard-version": "^4.4.0"
+    "standard-version": "^8.0.1"
   }
 }
